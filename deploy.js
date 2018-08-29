@@ -3,13 +3,16 @@
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
 const {interface,bytecode} = require('./compile');
+require('dotenv').config();
+
+const mnemonic = process.env.MNEMONIC;
+const infuraKey = process.env.RINKEBY_URL;
 
 
 //args are account mnemonic on metamask account, URL to network we want to connect to (infura)
 const provider = new HDWalletProvider(
-  'razor edge ride comfort acoustic edit swarm bone audit cart pave wool',
-  'https://rinkeby.infura.io/v3/75bc98b601a345c0b179e93e028c7e6c'
-
+  mnemonic,
+  infuraKey
 );
 const web3 = new Web3(provider); //allows us to deploy contracts, read, write, send ether, etc
 
